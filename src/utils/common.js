@@ -5,13 +5,6 @@ import InfoIcon from '@mui/icons-material/Info';
 
 export const draw = [
   {
-    value: <HomeIcon />,
-    id: '1',
-    name: 'Home',
-    path: '/'
-  },
-  {
-    value: <DiningIcon />,
     id: '2',
     path: '/meal',
     name: 'Ofline Dining'

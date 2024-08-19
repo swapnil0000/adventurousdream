@@ -7,6 +7,7 @@ const Form = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
     // Logic to handle form submission
+    alert("Form Submit Successfully")
     console.log('Form submitted');
   };
   const isMobileView=useMediaQuery(theme.breakpoints.down("md"))
@@ -28,7 +29,7 @@ const Form = () => {
     >
       <TextField
         label="Name"
-        variant="outlined"
+        variant="filled"
         required
         sx={{ marginBottom: '16px',backgroundColor:'white',borderRadius:'10px' }}
       />
@@ -42,7 +43,7 @@ const Form = () => {
       <TextField
         label="Phone Number"
         type="tel"
-        variant="outlined"
+        variant="filled"
         required
         sx={{ marginBottom: '16px' ,backgroundColor:'white',borderRadius:'10px' }}
       />

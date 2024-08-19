@@ -33,7 +33,7 @@ const Choose = () => {
     const isMobileView = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Box  sx={{ marginBottom:'10px',}}>
+        <Box  sx={{ marginBottom:'20px',}}>
         <Container sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center',width:'100%' }}>
             <Typography sx={{ marginTop: '30px', fontSize:isMobileView?"25px":"30px", fontWeight: '800',fontFamily:'montserrat',textAlign:'center' }}>
             Why Choose <span style={{color:'red'}}>Adventurous dreams ?</span>
@@ -46,7 +46,7 @@ const Choose = () => {
                                 width: '100%',
                                 padding: '10px',
                                 borderRadius:'15px',
-                                marginTop:'20px',
+                                marginTop:'10px',
                                 gap: '10px',
                                 display: 'flex',
                                 flexDirection: 'column',
@@ -54,7 +54,7 @@ const Choose = () => {
                                 justifyContent: 'center',
                                 backgroundColor:'white',
                                 boxShadow: '4px 4px 32px 0px rgba(100, 100, 100, 1.25)',
-                                marginBottom:'20px'
+                                marginBottom:isMobileView?'0px':"20px"
                             }}
                         >
                             <img src={box.img} alt={box.title} />

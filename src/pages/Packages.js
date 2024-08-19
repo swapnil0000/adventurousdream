@@ -15,7 +15,7 @@ const Packages = () => {
     const isMobileView = useMediaQuery(theme.breakpoints.down('md'));
 
     return (
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
+        <Box id="package" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%' }}>
             <Typography sx={{ textAlign: 'center', fontSize: '35px', fontWeight: '800', fontFamily: 'montserrat' }}>India & Around <span style={{ color: 'red' }}>Holiday Packages</span></Typography>
             {
                 !more && <Typography sx={{ width: '70%', textAlign: 'center' }}>Travelling abroad for a holiday is a great thing but there isn’t anything that beats the diversity of landscapes and cultures in India. We inspire...{!more && <span onClick={handleClick} style={{ color: 'red', cursor: 'pointer' }}>read more</span>}{more && <span> local travellers to travel more in India, as our India holiday packages acquaint travellers with the incredible beauty of the country. Take a look at top selling holiday packages in India.</span>}</Typography>

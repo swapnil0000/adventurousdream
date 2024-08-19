@@ -36,14 +36,14 @@ const Dialogs = ({ open, setOpen, image, title, description, stay, price, includ
                 aria-labelledby="customized-dialog-title"
                 open={open}
             >
-                <DialogTitle sx={{ m: 0, p: 2, fontSize: '20px', fontWeight: '600', fontFamily: 'montserrat' }} id="customized-dialog-title">
+                <DialogTitle sx={{ m: 0, p: 1, fontSize: '20px', fontWeight: '600', fontFamily: 'montserrat' }} id="customized-dialog-title">
                     {title}
                     <IconButton
                         aria-label="close"
                         onClick={handleClose}
                         sx={{
                             position: 'absolute',
-                            right: 8,
+                            right: 0,
                             top: 8,
                             color: (theme) => theme.palette.grey[500],
                         }}
@@ -51,14 +51,14 @@ const Dialogs = ({ open, setOpen, image, title, description, stay, price, includ
                         <CloseIcon />
                     </IconButton>
                 </DialogTitle>
-                <DialogContent sx={{ width: '600px', display: 'flex',flexDirection:isMobileView?"column":"row", gap: '20px' }} dividers>
-                    <Box sx={{width:'300px'}}>
-                        <img style={{ width: '250px', height: 'auto',borderRadius:'10px' }} src={image} alt={title} />
-                        <Typography sx={{ fontSize: '16px', fontWeight: '500' }} gutterBottom>{description}</Typography>
+                <DialogContent sx={{ width:isMobileView?"345px":"550px", display: 'flex',flexDirection:isMobileView?"column":"row" }} dividers>
+                    <Box sx={{width:"300px"}}>
+                        <img style={{ width:isMobileView?"100%":"280px", height: 'auto',borderRadius:'10px' }} src={image} alt={title} />
+                        <Typography sx={{ fontSize: '15px', fontWeight: '500' }} gutterBottom>{description}</Typography>
                     </Box>
                     <Box>
                         <Box sx={{ display: 'flex', flexDirection: 'column', gap: '10px',}}>
-                            <Typography sx={{ fontSize: '15px', fontWeight: '600', fontFamily: 'lato', }}>{stay}</Typography>
+                            <Typography sx={{ fontSize: '18px', fontWeight: '600', fontFamily: 'lato', }}>{stay}</Typography>
                             <Box>
                                 <Typography sx={{ fontSize: '15px', fontWeight: '600', fontFamily: 'lato', mb: 1 }}>Select Transport Mode</Typography>
                                 <Select
