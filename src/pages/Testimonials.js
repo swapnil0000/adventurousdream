@@ -4,10 +4,11 @@ import theme from '../theme'
 const Testimonials = () => {
   const isMobileView = useMediaQuery(theme.breakpoints.down('md'))
   return (
+    
     <Box sx={{
-      display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%'
+      display: 'flex', flexDirection: 'column',objectFit:'contain', alignItems: 'center', justifyContent: 'center',marginBottom:'20px', width: '100%',backgroundPosition:'contained', background:`url(/assets/back1.jpg)`,height:'350px'
     }}>
-      <Typography sx={{ marginTop:isMobileView?"0px":'30px', fontSize: isMobileView ? "23px" : "30px", fontWeight: '800', fontFamily: 'montserrat', textAlign: 'center'}}>
+      <Typography sx={{ marginTop:isMobileView?"0px":'30px',color:'white', fontSize: isMobileView ? "23px" : "30px", fontWeight: '800', fontFamily: 'montserrat', textAlign: 'center'}}>
         Read What <span style={{ color: 'red' }}>Our Customer Say</span></Typography>
       <Box sx={{ display: 'flex', flexDirection: isMobileView ? "column" : "row",alignItems:'center',justifyContent:'center', gap: '20px', width:isMobileView?"100%":"70%",marginTop:'10px' }}>
         <Box sx={{ backgroundColor: '#19212e', width: isMobileView ? "300px" : "200x", padding: "15px", borderRadius: '20px' }}>

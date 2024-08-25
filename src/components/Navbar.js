@@ -1,48 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { AppBar, Box, Button, Input, InputAdornment, styled, Toolbar, Typography, useMediaQuery } from "@mui/material";
+import React, { useState } from 'react';
+import { AppBar, Box, Button, Divider, Toolbar, Typography, useMediaQuery } from "@mui/material";
 import theme from '../theme';
-import Drawers from './MobileDrawer';
-import WhatsAppIcon from '@mui/icons-material/WhatsApp';
-
+import { useNavigate } from 'react-router-dom';
+import AnchorTemporaryDrawer from './MobileDrawer';
 
 const Navbar = () => {
     const handleWhatsapp = () => {
-        // Replace '1234567890' with the phone number you want to send the message to
         const phoneNumber = '9151472404';
         const whatsappUrl = `https://wa.me/${phoneNumber}`;
         window.open(whatsappUrl, '_blank');
     };
+
     const handleEmail = () => {
         const recipientEmail = 'adventurousdreamspvtltd@gmail.com';
         const mailtoUrl = `mailto:${recipientEmail}`;
         window.open(mailtoUrl, '_blank');
     };
+
     const isMobileView = useMediaQuery(theme.breakpoints.down('md'));
-    const [showAppBar, setShowAppBar] = useState(true);
-    const [lastScrollY, setLastScrollY] = useState(0);
 
-    useEffect(() => {
-        const handleScroll = () => {
-            if (window.scrollY > lastScrollY) {
-                setShowAppBar(false);
-            } else {
-                setShowAppBar(true);
-            }
-            setLastScrollY(window.scrollY);
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, [lastScrollY]);
-
-    const InputStyle = styled(Input)({
-        backgroundColor: '#F8F8F8',
-        width: '40%',
-        borderRadius: '25px',
-    });
+    const navigate = useNavigate();
 
     const handleScrollToSection = (id) => {
         const element = document.getElementById(id);
@@ -52,59 +29,70 @@ const Navbar = () => {
     };
 
     return (
-        <AppBar
-            position='sticky'
-            sx={{
-                boxShadow: 'none',
-                backgroundColor: '#333',
-                transform: showAppBar ? 'translateY(0)' : 'translateY(-100%)',
-                transition: 'transform 0.3s ease-in-out',
-            }}
-        >
-            {!isMobileView &&
-                <Toolbar sx={{ backgroundColor: 'transparent', display: 'flex', flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <img style={{ width: '100px', padding: '10px' }} src="/assets/logo.png" alt='logo' />
-                    <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: "center", justifyContent: 'space-evenly', width: '30%' }}>
-                        <Typography sx={{ color: 'white', cursor: 'pointer' }}  onClick={() => handleScrollToSection('destination')}>Destination</Typography>
-                        <Typography sx={{ color: 'white', cursor: 'pointer' }}  onClick={() => handleScrollToSection('package')}>Packages</Typography>
-                        <Typography sx={{ color: 'white', cursor: 'pointer' }}  onClick={() => handleScrollToSection('contact')}>Contact Us</Typography>
-                    </Box>
+        <AppBar position='relative'>
+            <Toolbar
+                sx={{
+                    height: '80px',
+                    display: 'flex',
+                    flexDirection: 'column',
+                    alignItems: 'center',
+                    backgroundColor: 'white',
+                    justifyContent: 'space-between',
+                    boxShadow: 'none'
 
-                    <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '50px', cursor: 'pointer', marginTop: '15px' }}>
-                        <Box onClick={handleWhatsapp} sx={{ display: 'flex', flexDirection: 'row', gap: '5px', alignItems: 'center', cursor: 'pointer' }}>
-                            <WhatsAppIcon sx={{ color: 'lightgreen', fontWeight: '700', fontSize: '20px' }} />
-                            <Typography sx={{fontSize:'15px'}}>9151472404</Typography>
+                }}
+            >
+                <Box
+                    sx={{
+                        width: '100%',
+                        display: 'flex',
+                        justifyContent: 'space-between',
+                        alignItems: 'center',
+                        padding: '10px',
+                        position: 'absolute', // Make sure the logo and menu items are positioned absolutely over the image
+                        top: 0, // Align to the top of the toolbar
+                    }}
+                >
+                    <img style={{ width: '100px' }} src="/assets/logo.png" alt='logo' />
+                    {!isMobileView && (
+                        <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: "center", gap: '15px', padding: '10px', borderRadius: '10px', color: 'white' }}>
+                            <Typography sx={{
+                                color: '#444444', cursor: 'pointer', fontSize: '17px', fontWeight: '600', fontFamily: 'sans-serif ', transition: 'transform 0.3s',
+                                '&:hover': { transform: 'scale(1.15)' },
+                            }} onClick={() => navigate('/')}>Home</Typography>
+                            <Divider orientation='vertical' sx={{
+                                height: '20px', width: '1.5px', border: '1px solid #666', transition: 'transform 0.3s',
+                                '&:hover': { transform: 'scale(1.15)' },
+                            }} />
+                            <Typography sx={{
+                                color: '#444444', cursor: 'pointer', fontSize: '17px', fontWeight: '600', fontFamily: 'sans-serif ', transition: 'transform 0.3s',
+                                '&:hover': { transform: 'scale(1.15)' },
+                            }} onClick={() => navigate('/about')}>About Us</Typography>
+                            <Divider orientation='vertical' sx={{ height: '20px', width: '1.5px', border: '1px solid #666' }} />
+                            <Typography sx={{
+                                color: '#444444', cursor: 'pointer', fontSize: '17px', fontWeight: '600', fontFamily: 'sans-serif ', transition: 'transform 0.3s',
+                                '&:hover': { transform: 'scale(1.15)' },
+                            }} onClick={() => handleScrollToSection('destination')}>Destination</Typography>
+                            <Divider orientation='vertical' sx={{ height: '20px', width: '1.5px', border: '1px solid #666' }} />
+                            <Typography sx={{
+                                color: '#444444', cursor: 'pointer', fontSize: '17px', fontWeight: '600', fontFamily: 'sans-serif ', transition: 'transform 0.3s',
+                                '&:hover': { transform: 'scale(1.15)' },
+                            }} onClick={() => handleScrollToSection('package')}>Packages</Typography>
+                            <Divider orientation='vertical' sx={{ height: '20px', width: '1.5px', border: '1px solid #666' }} />
+                            <Typography sx={{
+                                color: '#444444', cursor: 'pointer', fontSize: '17px', fontWeight: '600', fontFamily: 'sans-serif ', transition: 'transform 0.3s',
+                                '&:hover': { transform: 'scale(1.15)' },
+                            }} onClick={() => navigate('/contact')}>Contact Us</Typography>
                         </Box>
-                        <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '5px', alignItems: 'center', cursor: 'pointer' }}>
-                            <img  style={{ width: '20px' }} src="/assets/gmail.webp" alt='gmail' />
-                            <Typography sx={{color:'white',textDecorationLine:'underline',fontSize:'15px'
-                            }}>adventurousdreamspvtltd@gmail.com</Typography>
-                        </Box>
-                    </Box>
-
-                </Toolbar>
-            }
-            {isMobileView &&
-                <AppBar >
-                    <Toolbar sx={{ backgroundColor: 'white', display: 'flex', flexDirection: 'row', alignItems: 'center', width: '100%', gap: '30px', justifyContent: 'space-between' }}>
-
-                        <img style={{ width: '100px', padding: '10px' }} src="/assets/logo.png" alt='logo' />
-                        <Box sx={{ display: 'flex', alignItems: 'center', justifyContent: 'start', gap: '50px', cursor: 'pointer', marginTop: '15px' }}>
-                        <Box sx={{display:'flex',flexDirection:'row'
-                        }}>
-                        <Box onClick={handleWhatsapp} sx={{ display: 'flex', flexDirection: 'row', gap: '5px', alignItems: 'center', cursor: 'pointer' }}>
-                            <WhatsAppIcon sx={{ color: 'green', fontWeight: '700', fontSize: '20px' }} />
-                        </Box>
-                        <Box onClick={handleEmail} sx={{ display: 'flex', flexDirection: 'row', gap: '5px', alignItems: 'center', cursor: 'pointer' }}>
-                            <img  style={{ width: '30px' }} src="/assets/gmail.webp" alt='gmail' />
-                        </Box>
-                        </Box>
-                    </Box>
-
-
-                    </Toolbar>
-                </AppBar>
-            }
+                    )}
+                    {!isMobileView && <Box>
+                        <Button sx={{ backgroundColor: 'rgb(196, 86, 86)', padding: '10px', borderRadius: '10px', color: 'white' }}>Book Now</Button>
+                    </Box>}
+                    {isMobileView && (
+                        <AnchorTemporaryDrawer />
+                    )}
+                </Box>
+            </Toolbar>
         </AppBar>
     );
 };

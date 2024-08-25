@@ -36,7 +36,7 @@ const Category = () => {
         <Typography sx={{ marginTop: '0px', fontSize: '30px', fontWeight: '800', fontFamily: 'montserrat', textAlign: 'center', color: 'whitesmoke' }}>
           Explore Our <span style={{ color: 'red' }}>Top Destination</span>
         </Typography>
-        <ul id="imgList" ref={imgListRef} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', overflowX: 'scroll', listStyle: 'none', marginTop: '20px', gap: isMobileView ? "20px" : "0px" }}>
+        <ul id="imgList" ref={imgListRef} style={{ display: 'flex', flexDirection: 'row', alignItems: 'center', overflowX: 'scroll', listStyle: 'none', marginTop: '20px', gap: isMobileView ? "20px" : "0px"}}>
           {destination.map((ele) => (
             <li key={ele.id} style={{ marginLeft: '10px', width: '420px' }}>
               <Card sx={{ width: isMobileView ? "330px" : "400px", backgroundColor: 'rgba(255, 255, 255, 0.8)' }}>

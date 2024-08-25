@@ -7,17 +7,17 @@ import Packages from './Packages'
 import Contact from './Contact'
 import About from './About'
 import Testimonials from './Testimonials'
+import Acheivement from './Achievement'
 
 const Home = () => {
   return (
     <Box>
       <Carousels/>
-      <About/>
+      <Acheivement/>
       <Choose/>
       <Destination/>
       <Packages/>
       <Testimonials/>
-      <Contact/>     
     </Box>
   )
 }
