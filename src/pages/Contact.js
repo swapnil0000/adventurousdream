@@ -2,6 +2,10 @@ import { Box, Typography, useMediaQuery, Button } from '@mui/material';
 import React from 'react';
 import Form from '../components/Form';
 import theme from '../theme';
+import EmailIcon from '@mui/icons-material/Email';
+import PhoneIcon from '@mui/icons-material/Phone';
+import LocationOnIcon from '@mui/icons-material/LocationOn';
+import ContactDetailsForm from '../components/Form';
 
 const Contact = () => {
   const isMobileView = useMediaQuery(theme.breakpoints.down('md'));
@@ -11,8 +15,9 @@ const Contact = () => {
       {/* Background Section */}
       <Box
         sx={{
-          background: 'linear-gradient(to right top, #121519, #433352, #9c4569, #e36a4e, #ebb612)',
-          height: isMobileView ? '400px' : '300px',
+          background:`url(/assets/design3.jpg)`,
+          backgroundPosition:'cover',
+          height: isMobileView ? '200px' : '280px',
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
@@ -22,7 +27,7 @@ const Contact = () => {
         }}
       >
         <Typography
-          variant={isMobileView ? 'h4' : 'h3'}
+          variant={isMobileView ? 'h5' : 'h3'}
           sx={{
             color: 'white',
             fontWeight: 'bold',
@@ -38,11 +43,8 @@ const Contact = () => {
       {/* Content Section with Form */}
       <Box
         sx={{
-          marginTop: isMobileView ? '-100px' : '-50px',
-          backgroundColor: 'white',
-          borderRadius: '20px',
-          boxShadow: '0px 10px 30px rgba(0, 0, 0, 0.1)',
-         
+          marginTop: isMobileView ? '-70px' : '-100px',
+          backgroundColor: 'whitesmoke',
           maxWidth: isMobileView ? '90%' : '50%',
           mx: 'auto',
           textAlign: 'center',
@@ -50,16 +52,59 @@ const Contact = () => {
           position: 'relative',
         }}
       >
-        <Typography variant="h6" sx={{marginBottom: '20px', color: '#666',textTransform:'uppercase' }}>
-          Booking & Enquiry
-        </Typography>
-         <Box sx={{display:'flex',flexDirection:'row',width:'100%'}}>
-         {!isMobileView && <img style={{width:'50%',objectFit:'cover'}} src='/assets/Darjelling.jpg'/>}
-         <Box>
-          <Typography sx={{fontSize:'15px',fontWeight:'600'}}>swapnilsrivastava199@gmail.com</Typography>
-          <Typography sx={{fontSize:'15px',fontWeight:'500'}}>+91-6386455982</Typography>
-         </Box>
-         </Box>
+        <Box sx={{ display: 'flex', flexDirection: isMobileView ? 'column' : 'row', width: '100%', gap: '10px', alignItems: 'center' }}>
+          {/* Image Section */}
+
+          <Box sx={{ width: isMobileView ? "100%" : "50%", height: '200px' }} >
+            <img src='/assets/contact.jpg' alt='Contact' style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          </Box>
+
+          {/* Contact Details Section */}
+          <Box
+            sx={{
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '10px',
+              width: isMobileView ? "100%" : "50%",
+              padding: '10px',
+            }}
+          >
+            <Typography
+              sx={{
+                fontSize: '24px',
+                fontWeight: '800',
+                color: '#666 ',
+
+              }}
+            >
+              Contact Details
+            </Typography>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <EmailIcon sx={{ color: 'red' }} />
+              <Typography sx={{ fontSize: '16px', fontWeight: '600', color: '#666' }}>
+                swapnilsrivastava199@gmail.com
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <PhoneIcon sx={{ color: 'blue' }} />
+              <Typography sx={{ fontSize: '16px', fontWeight: '600', color: '#666' }}>
+                +91-6386455982
+              </Typography>
+            </Box>
+            <Box sx={{ display: 'flex' ,gap:'10px'}}>
+              <LocationOnIcon sx={{ color: 'blueviolet' }} />
+              <Typography sx={{ fontSize: '14px', fontWeight: '600', color: '#666',textAlign:'start' }}>
+                Dwarikapuri colony near Ravi Offset, Ballia (UP), Pin code – 277001
+              </Typography>
+            </Box>
+          </Box>
+
+        </Box>
+      </Box>
+      <Box sx={{display:'flex',flexDirection:'column',marginTop:'40px',margin:'20px'}}>
+        <Typography sx={{fontSize:'20px',color:'#666',fontWeight:'600',fontFamily:'lato',marginBottom:'10px'
+        }}>Got a question or need assistance? Fill out the form below, and we'll get back to you as soon as possible!</Typography>
+        <ContactDetailsForm/>
       </Box>
     </Box>
   );
