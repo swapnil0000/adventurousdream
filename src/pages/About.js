@@ -101,7 +101,6 @@ const About = () => {
          <Box sx={{width:'50%'}}>
          <Typography sx={{fontSize:'20px',color:'white',margin:'10px'}}>To create a good working environment for the employees and enable them to continuously improve their performance levels. </Typography>
          <Typography sx={{fontSize:'20px',color:'white',margin:'10px'}}>To provide quality service to the customers. </Typography>
-         <Typography sx={{fontSize:'20px',color:'white',margin:'10px'}}>To provide quality service to the customers. </Typography>
          </Box>
         </Box>
 
